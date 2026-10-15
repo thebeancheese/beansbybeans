@@ -1,19 +1,105 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get in touch with beans by beans.">
     <title>Contact | beans by beans</title>
+    <link rel="icon" href="/images/beans-logo.png" type="image/png">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/menu">Menu</a>
-        <a href="/about">About</a>
-        <a href="/contact" class="active" aria-current="page">Contact</a>
-    </nav>
 
-    <h1>Contact Us</h1>
-    <p>Have questions? We'd love to hear from you!</p>
+    <header class="site-header">
+        <nav class="nav container">
+            <a class="brand" href="/">
+                <img src="/images/beans-logo.png" alt="beans by beans logo">
+            </a>
+
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/menu">Menu</a>
+                <a href="/about">About</a>
+                <a href="/contact" class="active" aria-current="page">Contact</a>
+            </div>
+
+            <a href="/menu" class="nav-cta">Explore the Menu</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-hero">
+            <div class="container">
+                <span class="eyebrow">SAY HELLO</span>
+                <h1>Let's talk over coffee.</h1>
+                <p>Have a question, suggestion, or just want to say hi? We'd love to hear from you.</p>
+            </div>
+        </section>
+
+        <section class="contact-section container">
+            <div class="contact-info">
+                <span class="eyebrow">GET IN TOUCH</span>
+                <h2>We're all ears.</h2>
+                <p>
+                    Whether it's about our drinks, your experience,
+                    or anything coffee-related, feel free to reach out.
+                </p>
+
+                <div class="contact-detail">
+                    <h3>Our Coffee Shop</h3>
+                    <p>beans by beans</p>
+                </div>
+
+                <div class="contact-detail">
+                    <h3>Opening Hours</h3>
+                    <p>Coming soon</p>
+                </div>
+
+                <div class="contact-detail">
+                    <h3>Follow Along</h3>
+                    <p>Stay tuned for updates from beans by beans.</p>
+                </div>
+            </div>
+
+            <div class="contact-form-card">
+                <h2>Leave us a message.</h2>
+                <p>We'd love to know what's on your mind.</p>
+
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name"
+                               placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email"
+                               placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="5"
+                                  placeholder="Write your message here..."
+                                  required></textarea>
+                    </div>
+
+                    <button type="submit" class="contact-submit">
+                        Send Message
+                    </button>
+
+                    <p id="formStatus" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 beans by beans. Good coffee, better moments.</p>
+    </footer>
+
+    <script src="/js/contact.js"></script>
 </body>
 </html>
