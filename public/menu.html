@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="icon" href="/images/beans-logo.png" type="image/png">
     <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
 
     <header class="site-header">
@@ -21,8 +23,6 @@
                 <a href="/about">About</a>
                 <a href="/contact">Contact</a>
             </div>
-
-            <a href="/menu" class="nav-cta">Explore the Menu</a>
         </nav>
     </header>
 
@@ -31,7 +31,31 @@
             <div class="menu-heading">
                 <span class="eyebrow">MADE FOR EVERY MOOD</span>
                 <h1>Something good is brewing.</h1>
-                <p>From your everyday coffee favorites to something a little sweeter, find your perfect cup at beans by beans.</p>
+                <p>From your everyday coffee favorites to something a little sweeter, find your perfect cup at beans by
+                    beans.</p>
             </div>
 
-            <div class="menu
+            <div class="menu-controls">
+                <input type="text" id="searchInput" placeholder="Search for a drink...">
+
+                <select id="categoryFilter">
+                    <option value="all">All Drinks</option>
+                    <option value="coffee">Coffee</option>
+                    <option value="non-coffee">Non-Coffee</option>
+                </select>
+            </div>
+
+            <div id="drinkList" class="drink-grid">
+                <p>Loading our menu...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 beans by beans. Good coffee, better moments.</p>
+    </footer>
+
+    <script src="/js/menu.js"></script>
+</body>
+
+</html>
