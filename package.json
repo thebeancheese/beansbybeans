@@ -1,0 +1,9 @@
+{
+  "name": "basic-express-routing-coffee-shop",
+  "version": "1.0.0",
+  "description": "Coffee shop website demonstrating Express GET routes, static files, route params, and query strings.",
+  "main": "server.js",
+  "scripts": {"start": "node server.js", "dev": "node --watch server.js"},
+  "dependencies": {"express": "^4.21.2"},
+  "engines": {"node": ">=18"}
+}
