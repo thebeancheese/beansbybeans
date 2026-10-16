@@ -89,6 +89,7 @@ The `category`, `temperature`, and `search` parameters are read with `req.query`
 ## Project Structure
 
 ```text
+
 beansbybeans/
 ├── public/
 │   ├── css/
@@ -97,6 +98,24 @@ beansbybeans/
 │   │   ├── beans-logo.png
 │   │   ├── coffee-art.svg
 │   │   └── products/
+│   │       ├── signature-latte.jpg
+│   │       ├── iced-americano.jpg
+│   │       ├── caramel-macchiato.jpg
+│   │       ├── vanilla-latte.jpg
+│   │       ├── cold-brew.jpg
+│   │       ├── cafe-mocha.jpg
+│   │       ├── matcha-latte.jpg
+│   │       ├── strawberry-matcha.jpg
+│   │       ├── chocolate-velvet.jpg
+│   │       ├── hojicha-latte.jpg
+│   │       ├── strawberry-milk.jpg
+│   │       ├── chai-latte.jpg
+│   │       ├── butter-croissant.jpg
+│   │       ├── chocolate-croissant.jpg
+│   │       ├── chocolate-cookie.jpg
+│   │       ├── blueberry-cheesecake.jpg
+│   │       ├── cinnamon-roll.jpg
+│   │       └── banana-bread.jpg
 │   ├── js/
 │   │   ├── app.js
 │   │   ├── menu.js
@@ -111,6 +130,7 @@ beansbybeans/
 ├── package-lock.json
 ├── .gitignore
 └── README.md
+
 ```
 
 The `node_modules` directory is excluded from version control.
