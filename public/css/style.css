@@ -53,11 +53,10 @@ img {
 }
 
 .nav {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: space-between;
-    min-height: 88px;
-    gap: 28px
+    gap: 20px;
 }
 
 .brand img {
@@ -68,27 +67,42 @@ img {
 }
 
 .brand {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
+    grid-column: 1;
+    justify-self: start;
 }
 
 .nav-links {
+    grid-column: 2;
     display: flex;
-    gap: 33px;
     align-items: center;
-    font-size: 14px;
-    font-weight: 600
+    justify-content: center;
+    gap: 35px;
+    margin-left: 0;
 }
 
-.nav-links a {
-    color: #675b54;
-    padding: 9px 1px
+.nav::after {
+    content: "";
+    grid-column: 3;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
     color: var(--rust)
+}
+
+@media (max-width: 768px) {
+    .nav {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        width: 100%;
+    }
 }
 
 .nav-cta,
@@ -907,4 +921,105 @@ h3 {
 .nav-links a:hover,
 .nav-links a.active {
     color: var(--tan);
+}
+
+
+/* Menu category navigation */
+
+.menu-categories {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 35px 0 45px;
+}
+
+.category-btn {
+    background: transparent;
+    border: 1px solid var(--tan);
+    color: var(--espresso);
+    padding: 12px 24px;
+    border-radius: 50px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.category-btn:hover {
+    background: var(--tan);
+}
+
+.category-btn.active {
+    background: var(--espresso);
+    border-color: var(--espresso);
+    color: var(--cream);
+}
+
+/* Product cards */
+
+.drink-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.drink-card {
+    background: var(--white);
+    border: 1px solid var(--tan);
+    border-radius: 18px;
+    overflow: hidden;
+    padding: 0;
+    transition: transform 0.2s ease;
+}
+
+.drink-card:hover {
+    transform: translateY(-5px);
+}
+
+.drink-image {
+    display: block;
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    background: var(--tan);
+}
+
+.drink-content {
+    padding: 25px;
+}
+
+.drink-content h3 {
+    color: var(--espresso);
+    margin-bottom: 10px;
+}
+
+.drink-content p {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.drink-content .price {
+    display: block;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--rust);
+}
+
+@media (max-width: 900px) {
+    .drink-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .drink-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-btn {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
 }

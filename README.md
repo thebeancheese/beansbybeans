@@ -1,66 +1,137 @@
-# beans by beans Coffee Shop
+# beans by beans ☕
 
-**Student:** Vince Raiezen M. Cruzada  
-**Course activity:** 6WCSERVER - Basic Express Routing  
-**Technologies:** Node.js, Express.js, HTML, CSS, client-side JavaScript, SVG images
+**A Coffee Shop Web Application Using Express.js**
 
-A coffee shop website showcasing Express static file serving and GET routes. All content and images in `/public` are local files; no database or API keys are required. The Google Fonts import is optional, and fallback fonts are provided.
+**Author:** Vince Raiezen M. Cruzada  
+**Course Code:** 6WCSERVER  
+**Activity:** Basic Express Routing Laboratory  
+**GitHub Repository:** https://github.com/thebeancheese/beansbybeans
 
-## How to run
+## Project Description
 
-1. Install [Node.js](https://nodejs.org/) (18 or newer).
-2. Open this project folder in VS Code or a terminal.
-3. Run `npm install`.
-4. Run `npm start`.
-5. Open `http://localhost:3000`.
-6. Press **Ctrl+C** in the terminal to stop.
+**beans by beans** is a coffee shop website developed using Node.js and Express.js. This laboratory project demonstrates HTTP GET routing, static asset delivery, route and query parameters, and frontend integration with a JSON API.
 
-## Routes to try
+The website has Home, Menu, About, and Contact pages. Its dynamic menu displays coffee, non-coffee drinks, and pastries and can be filtered by category or serving temperature without reloading the page.
 
-| URL | Result |
+## Technologies Used
+
+- **Node.js:** Runs the web server.
+- **Express.js:** Handles routes, API responses, and static file serving.
+- **HTML5:** Structures the pages.
+- **CSS3:** Styles the website and responsive layouts.
+- **JavaScript:** Fetches menu data and provides browser-side interactions.
+
+## Features
+
+- Four pages: Home, Menu, About, and Contact
+- Custom **beans by beans** branding and color palette
+- Console logging when HTML pages are requested
+- 18 menu products with prices, descriptions, and image paths
+- Category buttons for Coffee, Non-Coffee, Pastries, Hot Drinks, and Iced Drinks
+- Dynamic menu loading using `fetch()` and JSON responses
+- Fallback illustration for missing product images
+- Demo contact form with client-side validation (messages are **not** sent or stored)
+- Custom 404 page and JSON API error responses
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/thebeancheese/beansbybeans.git
+   ```
+
+2. Open the project folder:
+
+   ```bash
+   cd beansbybeans
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Start the server:
+
+   ```bash
+   npm start
+   ```
+
+5. Visit **http://localhost:3000**.
+
+## GET Routes
+
+| Route | Description |
 | --- | --- |
 | `/` | Home page |
-| `/menu` | Dynamic menu page |
+| `/menu` | Menu page |
 | `/about` | About page |
 | `/contact` | Contact page |
-| `/css/style.css` | Static CSS file |
-| `/images/logo.svg` | Static image file |
-| `/js/app.js` | Static client-side JavaScript file |
-| `/api/drinks` | JSON list of all drinks |
-| `/api/drinks?category=coffee` | Filter by query string |
-| `/api/drinks?search=latte` | Search by query string |
-| `/api/drinks/2` | One drink using `req.params.id` |
-| `/api/drinks/999` | JSON 404 response |
-| `/unknown-page` | Custom HTML 404 response |
+| `/api/drinks` | All menu products, with optional filters |
+| `/api/drinks/:id` | One product selected by ID |
 
-## What to show during testing
+### API Examples
 
-- Use the site navigation; the terminal logs the page name and request URL.
-- Browse the Menu page; its cards load from `/api/drinks` using `fetch()`.
-- Try the Coffee and Non-Coffee filters, and type `latte` in the search box.
-- Click **View details** to fetch `/api/drinks/:id`.
-- Open DevTools → Network and refresh the page; check status **200** for HTML, CSS, image and JS requests.
-- Open an invalid URL to confirm **404**.
-
-## Project structure
-
-```
-server.js
-package.json
-package-lock.json (generated when installing dependencies)
-.gitignore
-README.md
-public/
-  index.html
-  menu.html
-  about.html
-  contact.html
-  404.html
-  css/style.css
-  js/app.js
-  images/logo.svg
-  images/coffee-art.svg
-  images/beans.svg
+```text
+/api/drinks?category=coffee
+/api/drinks?category=non-coffee
+/api/drinks?category=pastry
+/api/drinks?temperature=hot
+/api/drinks?temperature=iced
+/api/drinks?search=latte
+/api/drinks/1
 ```
 
-**Note:** The Canvas recording could not be viewed outside authenticated Canvas access. This project's navigation is Home, Menu, About, Contact and should be checked against the instructor's exact recording before submission.
+The `category`, `temperature`, and `search` parameters are read with `req.query`. Individual drink IDs are read with `req.params`.
+
+## Project Structure
+
+```text
+beansbybeans/
+├── public/
+│   ├── css/
+│   │   └── style.css
+│   ├── images/
+│   │   ├── beans-logo.png
+│   │   ├── coffee-art.svg
+│   │   └── products/
+│   ├── js/
+│   │   ├── app.js
+│   │   ├── menu.js
+│   │   └── contact.js
+│   ├── index.html
+│   ├── menu.html
+│   ├── about.html
+│   ├── contact.html
+│   └── 404.html
+├── server.js
+├── package.json
+├── package-lock.json
+├── .gitignore
+└── README.md
+```
+
+The `node_modules` directory is excluded from version control.
+
+## Testing
+
+- Visit `/`, `/menu`, `/about`, and `/contact` and confirm the server prints `Rendering index.html`, `Rendering menu.html`, and so on.
+- Inspect the browser **Network** tab to confirm CSS, JavaScript, and image resources return **200 OK** when available.
+- Switch menu categories to confirm the frontend fetches filtered API results without refreshing.
+- Visit `/api/drinks/999` to check a **404** JSON response.
+- Visit an unknown page such as `/randompage` to check the custom **404** page.
+
+## Scope
+
+This is a laboratory demonstration, not a live ordering system. Menu products are stored in a JavaScript array rather than a database. The project does not include login, purchases, payments, or persistent contact submissions.
+
+## Conclusion
+
+**beans by beans** demonstrates how Express.js can connect page routing, static HTML/CSS/JavaScript/images, and backend JSON endpoints to build a functional coffee shop web application.
+
+---
+
+**Developed by Vince Raiezen M. Cruzada**  
+**6WCSERVER | Basic Express Routing Laboratory**

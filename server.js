@@ -37,69 +37,194 @@ app.get('/contact', showPage('contact'));
 app.use(express.static(publicFolder));
 
 // Coffee shop menu data
+
 const drinks = [
+    // Coffee
     {
         id: 1,
         name: 'Signature Latte',
         category: 'coffee',
+        temperature: ['hot', 'iced'],
         price: 155,
-        description: 'Espresso, silky steamed milk, and a little comfort.'
+        image: '/images/products/signature-latte.jpg',
+        description: 'Espresso with smooth, creamy milk.'
     },
     {
         id: 2,
         name: 'Iced Americano',
         category: 'coffee',
+        temperature: ['iced'],
         price: 120,
-        description: 'Bold espresso poured over cool water and ice.'
+        image: '/images/products/iced-americano.jpg',
+        description: 'Bold espresso served over ice.'
     },
     {
         id: 3,
-        name: 'Caramel Cloud',
+        name: 'Caramel Macchiato',
         category: 'coffee',
+        temperature: ['hot', 'iced'],
         price: 175,
-        description: 'Sweet caramel and espresso with creamy foam.'
+        image: '/images/products/caramel-macchiato.jpg',
+        description: 'Espresso, milk, and sweet caramel.'
     },
     {
         id: 4,
-        name: 'Matcha Bloom',
-        category: 'non-coffee',
-        price: 180,
-        description: 'Earthy matcha with creamy milk.'
+        name: 'Vanilla Latte',
+        category: 'coffee',
+        temperature: ['hot', 'iced'],
+        price: 165,
+        image: '/images/products/vanilla-latte.jpg',
+        description: 'Smooth espresso with a touch of vanilla.'
     },
     {
         id: 5,
-        name: 'Chocolate Velvet',
-        category: 'non-coffee',
-        price: 165,
-        description: 'Rich chocolate, milk, and a smooth finish.'
+        name: 'Cold Brew',
+        category: 'coffee',
+        temperature: ['iced'],
+        price: 145,
+        image: '/images/products/cold-brew.jpg',
+        description: 'Slow-steeped coffee with a mellow taste.'
     },
     {
         id: 6,
-        name: 'Cold Brew',
+        name: 'Cafe Mocha',
         category: 'coffee',
-        price: 145,
-        description: 'Slow-steeped coffee with a mellow taste.'
+        temperature: ['hot', 'iced'],
+        price: 170,
+        image: '/images/products/cafe-mocha.jpg',
+        description: 'Espresso blended with chocolate and milk.'
+    },
+
+    // Non-Coffee
+    {
+        id: 7,
+        name: 'Matcha Latte',
+        category: 'non-coffee',
+        temperature: ['hot', 'iced'],
+        price: 180,
+        image: '/images/products/matcha-latte.jpg',
+        description: 'Earthy matcha blended with creamy milk.'
+    },
+    {
+        id: 8,
+        name: 'Strawberry Matcha',
+        category: 'non-coffee',
+        temperature: ['iced'],
+        price: 185,
+        image: '/images/products/strawberry-matcha.jpg',
+        description: 'Matcha, milk, and sweet strawberry.'
+    },
+    {
+        id: 9,
+        name: 'Chocolate Velvet',
+        category: 'non-coffee',
+        temperature: ['hot', 'iced'],
+        price: 165,
+        image: '/images/products/chocolate-velvet.jpg',
+        description: 'Rich and creamy chocolate goodness.'
+    },
+    {
+        id: 10,
+        name: 'Hojicha Latte',
+        category: 'non-coffee',
+        temperature: ['hot', 'iced'],
+        price: 180,
+        image: '/images/products/hojicha-latte.jpg',
+        description: 'Roasted Japanese green tea with milk.'
+    },
+    {
+        id: 11,
+        name: 'Strawberry Milk',
+        category: 'non-coffee',
+        temperature: ['iced'],
+        price: 150,
+        image: '/images/products/strawberry-milk.jpg',
+        description: 'Fresh strawberry flavor with creamy milk.'
+    },
+    {
+        id: 12,
+        name: 'Chai Latte',
+        category: 'non-coffee',
+        temperature: ['hot', 'iced'],
+        price: 160,
+        image: '/images/products/chai-latte.jpg',
+        description: 'Warm spices blended with smooth milk.'
+    },
+
+    // Pastries
+    {
+        id: 13,
+        name: 'Butter Croissant',
+        category: 'pastry',
+        temperature: [],
+        price: 95,
+        image: '/images/products/butter-croissant.jpg',
+        description: 'Flaky, buttery, and freshly baked.'
+    },
+    {
+        id: 14,
+        name: 'Chocolate Croissant',
+        category: 'pastry',
+        temperature: [],
+        price: 115,
+        image: '/images/products/chocolate-croissant.jpg',
+        description: 'Golden pastry filled with chocolate.'
+    },
+    {
+        id: 15,
+        name: 'Chocolate Chip Cookie',
+        category: 'pastry',
+        temperature: [],
+        price: 85,
+        image: '/images/products/chocolate-cookie.jpg',
+        description: 'Soft cookie loaded with chocolate chips.'
+    },
+    {
+        id: 16,
+        name: 'Blueberry Cheesecake',
+        category: 'pastry',
+        temperature: [],
+        price: 155,
+        image: '/images/products/blueberry-cheesecake.jpg',
+        description: 'Creamy cheesecake topped with blueberries.'
+    },
+    {
+        id: 17,
+        name: 'Cinnamon Roll',
+        category: 'pastry',
+        temperature: [],
+        price: 125,
+        image: '/images/products/cinnamon-roll.jpg',
+        description: 'Soft pastry with cinnamon and sweet glaze.'
+    },
+    {
+        id: 18,
+        name: 'Banana Bread',
+        category: 'pastry',
+        temperature: [],
+        price: 105,
+        image: '/images/products/banana-bread.jpg',
+        description: 'Moist banana bread with a homemade taste.'
     }
 ];
 
-// GET all drinks, search by name, or filter by category
-// Examples:
-// /api/drinks
-// /api/drinks?category=coffee
-// /api/drinks?search=latte
-
+// Get menu items using category, temperature, or search
 app.get('/api/drinks', (req, res) => {
     const category = String(req.query.category || 'all').toLowerCase();
+    const temperature = String(req.query.temperature || 'all').toLowerCase();
     const search = String(req.query.search || '').trim().toLowerCase();
 
     const filtered = drinks.filter(drink => {
         const matchesCategory =
             category === 'all' || drink.category === category;
 
+        const matchesTemperature =
+            temperature === 'all' || drink.temperature.includes(temperature);
+
         const matchesSearch =
             !search || drink.name.toLowerCase().includes(search);
 
-        return matchesCategory && matchesSearch;
+        return matchesCategory && matchesTemperature && matchesSearch;
     });
 
     res.json({

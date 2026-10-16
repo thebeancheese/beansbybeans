@@ -10,7 +10,6 @@
 </head>
 
 <body>
-
     <header class="site-header">
         <nav class="nav container">
             <a class="brand" href="/">
@@ -35,25 +34,29 @@
                     beans.</p>
             </div>
 
-            <div class="menu-controls">
-                <input type="text" id="searchInput" placeholder="Search for a drink...">
 
-                <select id="categoryFilter">
-                    <option value="all">All Drinks</option>
-                    <option value="coffee">Coffee</option>
-                    <option value="non-coffee">Non-Coffee</option>
-                </select>
+            <div class="menu-categories">
+                <button class="category-btn active" data-filter="all">All Items</button>
+                <button class="category-btn" data-filter="coffee">Coffee</button>
+                <button class="category-btn" data-filter="non-coffee">Non-Coffee</button>
+                <button class="category-btn" data-filter="pastry">Pastries</button>
+                <button class="category-btn" data-filter="hot">Hot Drinks</button>
+                <button class="category-btn" data-filter="iced">Iced Drinks</button>
             </div>
 
             <div id="drinkList" class="drink-grid">
                 <p>Loading our menu...</p>
             </div>
+
         </section>
     </main>
 
-    <footer class="site-footer">
-        <p>&copy; 2026 beans by beans. Good coffee, better moments.</p>
-    </footer>
+    <footer class="footer">
+    <div class="container">
+        <span>&copy; 2026 beans by beans</span>
+        <span>Thoughtfully brewed, simply enjoyed.</span>
+    </div>
+</footer>
 
     <script src="/js/menu.js"></script>
 </body>
