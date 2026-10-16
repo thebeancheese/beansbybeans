@@ -10,7 +10,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const publicFolder = path.join(__dirname, 'public');
 
-// Routes for HTML pages
 function showPage(pageName) {
     return (req, res) => {
         console.log(`Rendering ${pageName}.html`);
@@ -18,25 +17,18 @@ function showPage(pageName) {
     };
 }
 
-// Home
 app.get('/', (req, res) => {
     console.log('Rendering index.html');
     res.sendFile(path.join(publicFolder, 'index.html'));
 });
 
-// Menu
 app.get('/menu', showPage('menu'));
 
-// About
 app.get('/about', showPage('about'));
 
-// Contact
 app.get('/contact', showPage('contact'));
 
-// Serve static HTML, CSS, JavaScript, and images
 app.use(express.static(publicFolder));
-
-// Coffee shop menu data
 
 const drinks = [
     // Coffee
@@ -208,7 +200,6 @@ const drinks = [
     }
 ];
 
-// Get menu items using category, temperature, or search
 app.get('/api/drinks', (req, res) => {
     const category = String(req.query.category || 'all').toLowerCase();
     const temperature = String(req.query.temperature || 'all').toLowerCase();
@@ -233,9 +224,6 @@ app.get('/api/drinks', (req, res) => {
     });
 });
 
-// GET a specific drink using its ID
-// Example: /api/drinks/1
-
 app.get('/api/drinks/:id', (req, res) => {
     const id = Number(req.params.id);
     const drink = drinks.find(item => item.id === id);
@@ -249,14 +237,12 @@ app.get('/api/drinks/:id', (req, res) => {
     res.json(drink);
 });
 
-// Handle unknown API routes
 app.use('/api', (req, res) => {
     res.status(404).json({
         error: 'API route not found'
     });
 });
 
-// Handle unknown pages
 app.use((req, res) => {
     console.log(`Page not found: ${req.method} ${req.originalUrl}`);
 
@@ -265,7 +251,6 @@ app.use((req, res) => {
     );
 });
 
-// Start the Express server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
     console.log(`beans by beans: http://localhost:${PORT}`);
